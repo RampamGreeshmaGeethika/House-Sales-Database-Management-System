@@ -1,16 +1,26 @@
 <?php
 session_start();
 
-// Only handle admin logout
+// Handle admin logout
 if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
     unset($_SESSION['admin_email']);
     unset($_SESSION['role']);
     session_destroy();
-    header("Location: ../login.php"); // Go back to shared login page
+    header("Location: login.php"); // Redirect to shared login page (or admin/login.php if separate)
     exit();
 }
 
-// Fallback if no session or wrong role
+// Handle user logout
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'user') {
+    unset($_SESSION['email']);
+    unset($_SESSION['uid']);
+    unset($_SESSION['role']);
+    session_destroy();
+    header("Location: index.php"); // Redirect to homepage
+    exit();
+}
+
+// Fallback (if no session)
 session_destroy();
-header("Location: ../index.php");
+header("Location: index.php");
 exit();

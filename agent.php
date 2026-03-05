@@ -3,10 +3,8 @@ ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-if(!isset($_SESSION['email'])) {
-	header("location:login.php");
-}
-?>
+///code								
+?><!-- FOR MORE PROJECTS visit: codeastro.com -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,90 +16,109 @@ if(!isset($_SESSION['email'])) {
 
 <!-- Meta Tags -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 <link rel="shortcut icon" href="images/favicon.ico">
 
-<!--	Fonts	-->
+<!--	Fonts
+	========================================================-->
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
-
-<!--	Css Link	-->
+<!-- FOR MORE PROJECTS visit: codeastro.com -->
+<!--	Css Link
+	========================================================-->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="css/layerslider.css">
-<link rel="stylesheet" type="text/css" href="css/color.css">
+<link rel="stylesheet" type="text/css" href="css/color.css" id="color-change">
 <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="fonts/flaticon/flaticon.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/login.css">
 
-<!--	Title	-->
+<!--	Title
+	=========================================================-->
 <title>Real Estate PHP</title>
 </head>
 <body>
 
+<!--	Page Loader
+=============================================================
+<div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
+	<div class="d-flex justify-content-center y-middle position-relative">
+	  <div class="spinner-border" role="status">
+		<span class="sr-only">Loading...</span>
+	  </div>
+	</div>
+</div>
+--> 
+
+
 <div id="page-wrapper">
     <div class="row"> 
+        <!--	Header One -->
         <!--	Header start  -->
-		<?php include("include/header.php");?>
+		<?php include("include/header.php");?><!-- FOR MORE PROJECTS visit: codeastro.com -->
         <!--	Header end  -->
-        
-        <!--	Banner   -->
-        <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
+
+        <!--	Banner   --->
+        <!-- <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Profile</b></h2>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Agent</b></h2>
                     </div>
                     <div class="col-md-6">
                         <nav aria-label="breadcrumb" class="float-left float-md-right">
                             <ol class="breadcrumb bg-transparent m-0 p-0">
                                 <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Profile</li>
+                                <li class="breadcrumb-item active">Agent</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--	Banner End  -->
-		 
-		<!--	Profile Section   -->
+        </div> -->
+         <!--	Banner   --->
+
+
         <div class="full-row">
             <div class="container">
+				<div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="text-secondary double-down-line text-center mb-5">Agent</h2>
+                        </div>
+                </div>
                 <div class="row">
-					<div class="col-lg-12">
-						<h2 class="text-secondary double-down-line text-center">Profile</h2>
-                    </div>
-				</div>
-                <div class="dashboard-personal-info p-5 bg-white">
-                    <h5 class="text-secondary border-bottom-on-white pb-3 mb-4 text-center">Profile Information</h5>
-                    <div class="row justify-content-center"> <!-- Centered the row -->
-                        <div class="col-lg-6 col-md-8 text-center"> <!-- Reduced width and centered -->
-                            <?php 
-                                $uid = $_SESSION['uid'];
-                                $query = mysqli_query($con, "SELECT * FROM `user` WHERE user_id='$uid'");
-                                while($row = mysqli_fetch_array($query)) {
+                <!-- FOR MORE PROJECTS visit: codeastro.com -->
+                    <?php 
+							$query=mysqli_query($con,"SELECT * FROM user WHERE utype='agent'");
+								while($row=mysqli_fetch_array($query))
+								{
                             ?>
-                            <div class="font-18">
-                                <div class="mb-3 text-capitalize"><b>Name:</b> <?php echo $row['1']; ?></div>
-                                <div class="mb-3"><b>Email:</b> <?php echo $row['2']; ?></div>
-                                <div class="mb-3"><b>Contact:</b> <?php echo $row['3']; ?></div>
-                                <div class="mb-3 text-capitalize"><b>Role:</b> <?php echo $row['5']; ?></div>
-                            </div>
-                            <?php } ?>
+                            
+                    <div class="col-md-6 col-lg-4">
+                        <div class="hover-zoomer bg-white shadow-one mb-4">
+                            <div class="overflow-hidden"> <img src="admin/user/<?php echo $row['6'];?>" alt="aimage"> </div>
+                            <div class="py-3 text-center">
+                                <h5 class="text-secondary hover-text-success"><a href="#"><?php echo $row['1'];?></a></h5>
+                                <span>Real Estate - Agent</span> </div>
                         </div>
                     </div>
-                </div>            
+                   
+                    <?php } ?>
+                
+                  
+                </div>
             </div>
         </div>
-		<!--	Profile Section End   -->
-        
-        <!--	Footer start -->
+
+
+        <!--	Footer   start-->
 		<?php include("include/footer.php");?>
-		<!--	Footer end -->
-        
+		<!--	Footer   start-->
+
+
         <!-- Scroll to top --> 
         <a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i class="fas fa-angle-up"></i></a> 
         <!-- End Scroll To top --> 
@@ -109,11 +126,14 @@ if(!isset($_SESSION['email'])) {
 </div>
 <!-- Wrapper End --> 
 
-<!--	Js Link	--> 
+<!--	Js Link
+============================================================--> 
 <script src="js/jquery.min.js"></script> 
+<!--jQuery Layer Slider --> 
 <script src="js/greensock.js"></script> 
 <script src="js/layerslider.transitions.js"></script> 
 <script src="js/layerslider.kreaturamedia.jquery.js"></script> 
+<!--jQuery Layer Slider --> 
 <script src="js/popper.min.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/owl.carousel.min.js"></script> 
@@ -122,6 +142,8 @@ if(!isset($_SESSION['email'])) {
 <script src="js/draggable-0.1.js"></script> 
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
+
 <script src="js/custom.js"></script>
 </body>
-</html>
+
+</html> 
